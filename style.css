@@ -1,60 +1,87 @@
 /* Shared Styles for All Lecture Pages */
 :root {
-    --primary: #8b0000; /* Deep Crimson */
-    --accent: #d4af37;  /* Gold */
+    --primary: #8b0000;
+    --accent: #d4af37;
     --text: #2d2d2d;
-    --bg: #fdfcf8;      /* Cream paper */
+    --bg: #fdfcf8;
 }
 
-body {
+html, body {
+    margin: 0; padding: 0;
+    width: 100%; min-height: 100%;
+    background-color: var(--bg);
+    color: var(--text);
     font-family: 'Inter', sans-serif;
     line-height: 1.8;
-    color: var(--text);
-    background-color: var(--bg);
-    margin: 0; padding: 0;
-    scroll-behavior: smooth;
 }
 
-.container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px 100px 20px;
+}
 
 header {
     text-align: center;
     border-bottom: 3px double var(--accent);
-    margin-bottom: 50px; padding-bottom: 20px;
+    margin-bottom: 50px;
+    padding-bottom: 20px;
 }
 
-h1 { font-family: 'Playfair Display', serif; color: var(--primary); font-size: 2.5rem; }
-h2 { font-family: 'Playfair Display', serif; color: var(--primary); border-left: 4px solid var(--accent); padding-left: 15px; margin-top: 40px; }
+h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--primary); }
 
 .liturgy-quote {
-    background: #f4f0e6; border-radius: 8px; padding: 20px;
-    font-style: italic; margin: 20px 0; border: 1px solid #e2dcc8;
+    background: #f4f0e6;
+    border-radius: 8px;
+    padding: 20px;
+    font-style: italic;
+    margin: 20px 0;
+    border: 1px solid #e2dcc8;
 }
 
-/* Footnote Links in Text */
-sup a {
-    color: var(--primary);
+/* NAVIGATION BUTTONS */
+.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 50px 0;
+    gap: 10px;
+}
+
+.btn {
     text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 8px;
     font-weight: bold;
-    padding: 0 2px;
+    transition: 0.3s;
+    border: 2px solid var(--primary);
+    font-family: 'Inter', sans-serif;
 }
 
-sup a:hover { background: var(--accent); color: white; }
+.btn-home {
+    color: var(--primary);
+    background: transparent;
+}
 
-/* Footnotes Section at Bottom */
+.btn-next {
+    color: white;
+    background: var(--primary);
+}
+
+.btn:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* FOOTNOTES */
+sup a { color: var(--primary); text-decoration: none; font-weight: bold; }
 .footnotes {
-    margin-top: 60px;
-    padding-top: 20px;
-    border-top: 1px solid #ddd;
-    font-size: 0.9rem;
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 2px solid var(--accent);
+    font-size: 0.95rem;
     color: #555;
 }
-
-.footnote-item { margin-bottom: 10px; }
-
-.back-link {
-    text-decoration: none;
-    color: var(--accent);
-    font-weight: bold;
-    margin-left: 5px;
-}
+.footnote-item { margin-bottom: 12px; }
+.back-link { text-decoration: none; color: var(--accent); font-weight: bold; }
