@@ -1,0 +1,60 @@
+/* Shared Styles for All Lecture Pages */
+:root {
+    --primary: #8b0000; /* Deep Crimson */
+    --accent: #d4af37;  /* Gold */
+    --text: #2d2d2d;
+    --bg: #fdfcf8;      /* Cream paper */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.8;
+    color: var(--text);
+    background-color: var(--bg);
+    margin: 0; padding: 0;
+    scroll-behavior: smooth;
+}
+
+.container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+
+header {
+    text-align: center;
+    border-bottom: 3px double var(--accent);
+    margin-bottom: 50px; padding-bottom: 20px;
+}
+
+h1 { font-family: 'Playfair Display', serif; color: var(--primary); font-size: 2.5rem; }
+h2 { font-family: 'Playfair Display', serif; color: var(--primary); border-left: 4px solid var(--accent); padding-left: 15px; margin-top: 40px; }
+
+.liturgy-quote {
+    background: #f4f0e6; border-radius: 8px; padding: 20px;
+    font-style: italic; margin: 20px 0; border: 1px solid #e2dcc8;
+}
+
+/* Footnote Links in Text */
+sup a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0 2px;
+}
+
+sup a:hover { background: var(--accent); color: white; }
+
+/* Footnotes Section at Bottom */
+.footnotes {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.footnote-item { margin-bottom: 10px; }
+
+.back-link {
+    text-decoration: none;
+    color: var(--accent);
+    font-weight: bold;
+    margin-left: 5px;
+}
