@@ -79,3 +79,28 @@ sup a { color: var(--primary); text-decoration: none; font-weight: bold; }
 .footnotes { margin-top: 50px; padding-top: 30px; border-top: 2px solid var(--accent); font-size: 0.95rem; color: #555; }
 .footnote-item { margin-bottom: 15px; }
 .back-link { text-decoration: none; color: var(--accent); font-weight: bold; }
+
+/* Navigation Buttons Styling */
+.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 60px 0 20px 0;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+    border: 2px solid var(--primary);
+    font-family: 'Inter', sans-serif;
+}
+
+.btn-home { color: var(--primary); background: transparent; }
+.btn-next { color: white; background: var(--primary); }
+.btn:hover { background: var(--accent); border-color: var(--accent); color: white; }
+
+footer p { font-size: 0.8rem; padding-bottom: 40px; }
