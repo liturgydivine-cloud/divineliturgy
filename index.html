@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Basic Metadata for Search Engines -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liturgical Studies: 19 Lectures</title>
-    
-    <!-- External Resources -->
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-    
     <style>
-        /* Specific styles for the Index Page Grid */
         body { text-align: center; padding: 50px 20px; }
         
+        /* SEARCH BAR FIX: Matches the Grid width */
         .search-input {
-            padding: 12px; width: 100%; max-width: 400px;
-            border-radius: 8px; border: 1px solid var(--accent);
-            margin-bottom: 40px; font-family: inherit;
+            padding: 15px; width: 100%; max-width: 1100px;
+            border-radius: 12px; border: 2px solid var(--accent);
+            margin-bottom: 40px; font-family: inherit; font-size: 1.1rem;
+            box-sizing: border-box; /* Ensures padding doesn't push it wider */
         }
 
         .lecture-grid {
@@ -31,39 +28,46 @@
             background: white; border: 1px solid #e2dcc8; padding: 30px; 
             border-radius: 12px; text-decoration: none; color: var(--primary); 
             font-weight: bold; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
-            display: flex; flex-direction: column; height: 120px; justify-content: center;
+            display: flex; flex-direction: column; height: 130px; justify-content: center;
         }
 
         .card:hover { transform: translateY(-5px); background: var(--primary); color: white; border-color: var(--primary); }
-        
         .card span { display: block; color: var(--accent); font-size: 0.8rem; text-transform: uppercase; margin-bottom: 8px; }
         .card:hover span { color: #fdfcf8; }
     </style>
 </head>
 <body>
 
-    <!-- Header Section -->
     <h1 style="font-size: 3rem; margin-bottom: 5px;">Liturgical Studies</h1>
     <p style="color: #555;">A 19-Part Journey through the Divine Liturgy</p>
 
-    <!-- Real-time Search Bar -->
-    <input type="text" id="searchInput" class="search-input" placeholder="Search lectures (e.g. Incense, Lamb)..." onkeyup="filterLectures()">
+    <!-- Full-Width Search Bar -->
+    <input type="text" id="searchInput" class="search-input" placeholder="Search for a topic (e.g. Incense, Lamb, Communion)..." onkeyup="filterLectures()">
 
-    <!-- Lecture Grid -->
+    <!-- FULL GRID OF 19 LECTURES -->
     <div class="lecture-grid" id="lectureGrid">
-        <!-- Card Template: Link, Lecture Label, and Title -->
         <a href="lecture-01.html" class="card"><span>Lecture 1</span>Raising of Incense</a>
         <a href="lecture-02.html" class="card"><span>Lecture 2</span>The Prayers of the Rite</a>
-        <a href="lecture-03.html" class="card"><span>Lecture 3</span>Choosing the Lamb</a>
-        <!-- ... add all 19 cards here ... -->
+        <a href="lecture-03.html" class="card"><span>Lecture 3</span>Psalms & Choosing the Lamb</a>
+        <a href="lecture-04.html" class="card"><span>Lecture 4</span>Liturgy of the Word</a>
+        <a href="lecture-05.html" class="card"><span>Lecture 5</span>The Catholic Epistle</a>
+        <a href="lecture-06.html" class="card"><span>Lecture 6</span>The Praxis & Synaxarium</a>
+        <a href="lecture-07.html" class="card"><span>Lecture 7</span>The Holy Gospel</a>
+        <a href="lecture-08.html" class="card"><span>Lecture 8</span>The Liturgy of the Faithful</a>
+        <a href="lecture-09.html" class="card"><span>Lecture 9</span>Meet and Right</a>
+        <a href="lecture-10.html" class="card"><span>Lecture 10</span>The Prayer of Agios</a>
+        <a href="lecture-11.html" class="card"><span>Lecture 11</span>Institution Narrative</a>
+        <a href="lecture-12.html" class="card"><span>Lecture 12</span>The Litanies</a>
+        <a href="lecture-13.html" class="card"><span>Lecture 13</span>Commemoration of Saints</a>
+        <a href="lecture-14.html" class="card"><span>Lecture 14</span>Commemoration of Departed</a>
+        <a href="lecture-15.html" class="card"><span>Lecture 15</span>The Prayer of the Fraction</a>
+        <a href="lecture-16.html" class="card"><span>Lecture 16</span>Ritual & Spiritual Fraction</a>
+        <a href="lecture-17.html" class="card"><span>Lecture 17</span>The Lord's Prayer</a>
+        <a href="lecture-18.html" class="card"><span>Lecture 18</span>Signs Before Confession</a>
         <a href="lecture-19.html" class="card"><span>Lecture 19</span>Communion & Dismissal</a>
     </div>
 
     <script>
-        /**
-         * Real-time Filter Logic
-         * Loops through all 'card' elements and hides those that don't match the search term
-         */
         function filterLectures() {
             let input = document.getElementById('searchInput').value.toLowerCase();
             let cards = document.getElementsByClassName('card');
