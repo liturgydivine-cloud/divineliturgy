@@ -5,11 +5,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // 1. Reading Time Calculation
     const text = document.body.innerText;
-    const wpm = 200;
     const words = text.split(/\s+/).length;
-    const time = Math.ceil(words / wpm);
+    const time = Math.ceil(words / 200);
 
-    // 2. Add Progress Bar and Reading Time
+    // 2. Build UI Components (Header & Progress)
     document.body.insertAdjacentHTML('afterbegin', `<div id="progress-bar"></div>`);
     const header = document.querySelector('header');
     if (header) {
@@ -17,7 +16,30 @@ document.addEventListener("DOMContentLoaded", function() {
         header.insertAdjacentHTML('beforeend', `<span class="reading-time">⏱️ ${time} min read</span>`);
     }
 
-    // 3. Theme Toggle (Vesper Mode)
+    // 3. Footnote Peeking Logic (RESORED)
+    const toolTip = document.createElement('div');
+    toolTip.className = 'footnote-tooltip';
+    document.body.appendChild(toolTip);
+
+    document.querySelectorAll('sup a').forEach(link => {
+        link.addEventListener('mouseenter', function(e) {
+            const fnId = this.getAttribute('href').substring(1);
+            const fnElement = document.getElementById(fnId);
+            if (fnElement) {
+                // Get text and remove the back-link arrow ↩
+                const fnText = fnElement.innerText.replace('↩', '').trim();
+                toolTip.innerText = fnText;
+                toolTip.style.display = 'block';
+                toolTip.style.left = (e.pageX - 150) + 'px'; // Center it somewhat
+                toolTip.style.top = (e.pageY + 25) + 'px';
+            }
+        });
+        link.addEventListener('mouseleave', () => {
+            toolTip.style.display = 'none';
+        });
+    });
+
+    // 4. Theme Toggle (Vesper Mode)
     document.body.insertAdjacentHTML('beforeend', `<button id="theme-toggle" title="Toggle Vesper Mode">🌙</button>`);
     const toggle = document.getElementById('theme-toggle');
     toggle.addEventListener('click', () => {
@@ -26,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
         toggle.innerText = mode === 'dark' ? '☀️' : '🌙';
     });
 
-    // 4. Generate Navigation Buttons
+    // 5. Navigation Buttons Placeholder
     const navCont = document.getElementById('nav-placeholder');
     if (navCont && !isNaN(currentNum)) {
         const nextNum = currentNum + 1;
@@ -35,14 +57,21 @@ document.addEventListener("DOMContentLoaded", function() {
         navCont.innerHTML = `<div class="nav-buttons"><a href="index.html" class="btn btn-home">🏠 Home Menu</a>${nextBtn}</div>`;
     }
 
-    // 5. Scroll Progress and Back to Top
+    // 6. Scroll to Top & Global Footer
     document.body.insertAdjacentHTML('beforeend', `<button id="scrollToTop">↑</button>`);
     const topBtn = document.getElementById('scrollToTop');
     window.onscroll = () => {
         let winScroll = document.documentElement.scrollTop;
         let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         document.getElementById("progress-bar").style.width = (winScroll / height) * 100 + "%";
-        topBtn.style.display = winScroll > 300 ? "block" : "none";
+        topBtn.style.display = winScroll > 400 ? "block" : "none";
     };
     topBtn.onclick = () => window.scrollTo({top: 0, behavior: 'smooth'});
+
+    const container = document.querySelector('.container');
+    if (container) {
+        const footer = document.createElement('footer');
+        footer.innerHTML = `<hr><p style="text-align:center; opacity:0.6; margin-top:20px; font-size:0.8rem; padding-bottom:40px;">&copy; ${new Date().getFullYear()} Liturgical Studies Series</p>`;
+        container.appendChild(footer);
+    }
 });
