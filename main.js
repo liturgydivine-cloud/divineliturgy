@@ -1,72 +1,48 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Identify current lecture number from the filename (e.g., lecture-05.html -> 5)
     const path = window.location.pathname;
     const page = path.split("/").pop();
     const currentNum = parseInt(page.replace('lecture-', '').replace('.html', ''));
 
-    // 2. Insert Top Navigation (Back to Menu)
+    // 1. Reading Time Calculation
+    const text = document.body.innerText;
+    const wpm = 200;
+    const words = text.split(/\s+/).length;
+    const time = Math.ceil(words / wpm);
+
+    // 2. Add Progress Bar and Reading Time
+    document.body.insertAdjacentHTML('afterbegin', `<div id="progress-bar"></div>`);
     const header = document.querySelector('header');
     if (header) {
-        const topNav = document.createElement('p');
-        topNav.innerHTML = `<a href="index.html" style="color: var(--accent); text-decoration: none; font-weight: bold;">← Back to Menu</a>`;
-        header.prepend(topNav);
+        header.insertAdjacentHTML('afterbegin', `<p><a href="index.html" style="color: var(--accent); text-decoration: none; font-weight: bold;">← Back to Menu</a></p>`);
+        header.insertAdjacentHTML('beforeend', `<span class="reading-time">⏱️ ${time} min read</span>`);
     }
 
-    // Insert Bottom Navigation (Home and Next)
-    const navContainer = document.getElementById('nav-placeholder');
-    if (navContainer && !isNaN(currentNum)) {
+    // 3. Theme Toggle (Vesper Mode)
+    document.body.insertAdjacentHTML('beforeend', `<button id="theme-toggle" title="Toggle Vesper Mode">🌙</button>`);
+    const toggle = document.getElementById('theme-toggle');
+    toggle.addEventListener('click', () => {
+        const mode = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', mode);
+        toggle.innerText = mode === 'dark' ? '☀️' : '🌙';
+    });
+
+    // 4. Generate Navigation Buttons
+    const navCont = document.getElementById('nav-placeholder');
+    if (navCont && !isNaN(currentNum)) {
         const nextNum = currentNum + 1;
         const nextFile = `lecture-${nextNum.toString().padStart(2, '0')}.html`;
-        
-        let nextButton = '';
-        // Only show "Next" button if we aren't on the last lecture (19)
-        if (currentNum < 19) {
-            nextButton = `<a href="${nextFile}" class="btn btn-next">Next Lecture: ${nextNum} →</a>`;
-        }
-
-        navContainer.innerHTML = `
-            <div class="nav-buttons">
-                <a href="index.html" class="btn btn-home">🏠 Home Menu</a>
-                ${nextButton}
-            </div>
-        `;
-    }
-    
-    // Insert Global Footer
-    const container = document.querySelector('.container');
-    if (container) {
-        const footer = document.createElement('footer');
-        footer.innerHTML = `<hr><p style="text-align:center; opacity:0.6; margin-top:20px;">&copy; ${new Date().getFullYear()} Liturgical Studies Series</p>`;
-        container.appendChild(footer);
+        const nextBtn = currentNum < 19 ? `<a href="${nextFile}" class="btn btn-next">Next Lecture →</a>` : '';
+        navCont.innerHTML = `<div class="nav-buttons"><a href="index.html" class="btn btn-home">🏠 Home Menu</a>${nextBtn}</div>`;
     }
 
-    // Progress Bar 
-    const progCont = document.createElement('div');
-    progCont.id = 'progress-container';
-    progCont.innerHTML = `<div id="progress-bar"></div>`;
-    document.body.prepend(progCont);
-
-    window.onscroll = function() {
-        let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    // 5. Scroll Progress and Back to Top
+    document.body.insertAdjacentHTML('beforeend', `<button id="scrollToTop">↑</button>`);
+    const topBtn = document.getElementById('scrollToTop');
+    window.onscroll = () => {
+        let winScroll = document.documentElement.scrollTop;
         let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        let scrolled = (winScroll / height) * 100;
-        document.getElementById("progress-bar").style.width = scrolled + "%";
+        document.getElementById("progress-bar").style.width = (winScroll / height) * 100 + "%";
+        topBtn.style.display = winScroll > 300 ? "block" : "none";
     };
-
-    // Footnote Peeking 
-    const toolTip = document.createElement('div');
-    toolTip.className = 'footnote-tooltip';
-    document.body.appendChild(toolTip);
-
-    document.querySelectorAll('sup a').forEach(link => {
-        link.addEventListener('mouseenter', function(e) {
-            const fnId = this.getAttribute('href').substring(1);
-            const fnText = document.getElementById(fnId).innerText.replace('↩', '');
-            toolTip.innerText = fnText;
-            toolTip.style.display = 'block';
-            toolTip.style.left = e.pageX + 'px';
-            toolTip.style.top = (e.pageY + 20) + 'px';
-        });
-        link.addEventListener('mouseleave', () => toolTip.style.display = 'none');
-    });
+    topBtn.onclick = () => window.scrollTo({top: 0, behavior: 'smooth'});
 });
