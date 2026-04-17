@@ -39,4 +39,21 @@ document.addEventListener("DOMContentLoaded", function() {
         footer.innerHTML = `<hr><p style="text-align:center; opacity:0.6; margin-top:20px;">&copy; ${new Date().getFullYear()} Liturgical Studies Series</p>`;
         container.appendChild(footer);
     }
+
+        // Footnote Peeking ---
+    const toolTip = document.createElement('div');
+    toolTip.className = 'footnote-tooltip';
+    document.body.appendChild(toolTip);
+
+    document.querySelectorAll('sup a').forEach(link => {
+        link.addEventListener('mouseenter', function(e) {
+            const fnId = this.getAttribute('href').substring(1);
+            const fnText = document.getElementById(fnId).innerText.replace('↩', '');
+            toolTip.innerText = fnText;
+            toolTip.style.display = 'block';
+            toolTip.style.left = e.pageX + 'px';
+            toolTip.style.top = (e.pageY + 20) + 'px';
+        });
+        link.addEventListener('mouseleave', () => toolTip.style.display = 'none');
+    });
 });
