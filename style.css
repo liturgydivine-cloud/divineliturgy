@@ -80,6 +80,21 @@ sup a { color: var(--primary); text-decoration: none; font-weight: bold; }
 .footnote-item { margin-bottom: 15px; }
 .back-link { text-decoration: none; color: var(--accent); font-weight: bold; }
 
+/* 4. Footnote Tooltip (Peeking) */
+.footnote-tooltip {
+    position: absolute;
+    background: #fff;
+    border: 1px solid var(--accent);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    font-size: 0.85rem;
+    max-width: 250px;
+    z-index: 1000;
+    color: var(--text);
+    display: none; /* Controlled by JS */
+}
+
 /* Navigation Buttons Styling */
 .nav-buttons {
     display: flex;
