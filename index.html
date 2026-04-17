@@ -3,20 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liturgical Studies: 19 Lectures</title>
+    <title>Liturgical Studies | Deacon Wannas</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body { text-align: center; padding: 50px 20px; }
         
-        /* SEARCH BAR FIX: Matches the Grid width */
+        /* CAPTIVATING INTRO STYLING */
+        .intro-container {
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+        }
+        .main-title {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+        .author-name {
+            color: var(--accent);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            display: block;
+        }
+        .captivating-text {
+            font-size: 1.2rem;
+            color: #555;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        /* SEARCH BAR: Matches the 1100px Grid width */
         .search-input {
             padding: 15px; width: 100%; max-width: 1100px;
             border-radius: 12px; border: 2px solid var(--accent);
             margin-bottom: 40px; font-family: inherit; font-size: 1.1rem;
-            box-sizing: border-box; /* Ensures padding doesn't push it wider */
+            box-sizing: border-box;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
+        /* GRID LAYOUT */
         .lecture-grid {
             max-width: 1100px; margin: 0 auto;
             display: grid;
@@ -38,8 +65,13 @@
 </head>
 <body>
 
-    <h1 style="font-size: 3rem; margin-bottom: 5px;">Liturgical Studies</h1>
-    <p style="color: #555;">A 19-Part Journey through the Divine Liturgy</p>
+    <div class="intro-container">
+        <h1 class="main-title">Liturgical Studies</h1>
+        <span class="author-name">by Deacon Wannas</span>
+        <p class="captivating-text">
+            "Step into the Holy of Holies. Experience the mystical union of Heaven and Earth through this immersive 19-part spiritual journey into the sacred Rites of the Divine Liturgy."
+        </p>
+    </div>
 
     <!-- Full-Width Search Bar -->
     <input type="text" id="searchInput" class="search-input" placeholder="Search for a topic (e.g. Incense, Lamb, Communion)..." onkeyup="filterLectures()">
