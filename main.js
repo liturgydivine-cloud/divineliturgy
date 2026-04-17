@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // 1. Identify current lecture number from the filename (e.g., lecture-05.html -> 5)
+    // Identify current lecture number from the filename (e.g., lecture-05.html -> 5)
     const path = window.location.pathname;
     const page = path.split("/").pop();
     const currentNum = parseInt(page.replace('lecture-', '').replace('.html', ''));
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
         header.prepend(topNav);
     }
 
-    // 3. Insert Bottom Navigation (Home and Next)
+    // Insert Bottom Navigation (Home and Next)
     const navContainer = document.getElementById('nav-placeholder');
     if (navContainer && !isNaN(currentNum)) {
         const nextNum = currentNum + 1;
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
         `;
     }
     
-    // 4. Insert Global Footer
+    // Insert Global Footer
     const container = document.querySelector('.container');
     if (container) {
         const footer = document.createElement('footer');
@@ -40,7 +40,20 @@ document.addEventListener("DOMContentLoaded", function() {
         container.appendChild(footer);
     }
 
-        // Footnote Peeking ---
+    // Progress Bar 
+    const progCont = document.createElement('div');
+    progCont.id = 'progress-container';
+    progCont.innerHTML = `<div id="progress-bar"></div>`;
+    document.body.prepend(progCont);
+
+    window.onscroll = function() {
+        let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        let scrolled = (winScroll / height) * 100;
+        document.getElementById("progress-bar").style.width = scrolled + "%";
+    };
+
+    // Footnote Peeking 
     const toolTip = document.createElement('div');
     toolTip.className = 'footnote-tooltip';
     document.body.appendChild(toolTip);
