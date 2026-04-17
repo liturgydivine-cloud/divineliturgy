@@ -1,24 +1,98 @@
+/* 
+   LITURGICAL STUDIES: GLOBAL STYLESHEET 
+   Theme: Vibrant Coptic (Deep Crimson & Gold)
+*/
+
 :root {
-    --primary: #8b0000;
-    --accent: #d4af37;
-    --text: #2d2d2d;
-    --bg: #fdfcf8;
-    --quote-bg: #f4f0e6;
+    /* Color Palette */
+    --primary: #8b0000;    /* Deep Crimson: Used for titles and primary actions */
+    --accent: #d4af37;     /* Gold: Used for borders, icons, and highlights */
+    --text: #2d2d2d;       /* Dark Grey: Optimal for reading on light backgrounds */
+    --bg: #fdfcf8;         /* Cream Paper: Soft on the eyes for long-form reading */
+    --quote-bg: #f4f0e6;   /* Subtle Parchment: Used for liturgical quote boxes */
 }
 
+/* Vesper Mode (Dark Theme) Overrides */
 [data-theme="dark"] {
     --bg: #1a1a1a;
     --text: #e0e0e0;
-    --primary: #ff4d4d;
+    --primary: #ff4d4d;    /* Brighter red for visibility on dark background */
     --accent: #d4af37;
     --quote-bg: #2d2d2d;
 }
 
-html { scroll-behavior: smooth; }
-body { margin: 0; padding: 0; background-color: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.8; transition: background 0.3s, color 0.3s; }
-.container { max-width: 800px; margin: 0 auto; padding: 40px 20px 100px 20px; }
-header { text-align: center; border-bottom: 3px double var(--accent); margin-bottom: 50px; padding-bottom: 20px; }
+/* Base Page Setup */
+html { scroll-behavior: smooth; } /* Enables smooth jumping between footnotes */
+
+body { 
+    margin: 0; 
+    padding: 0; 
+    background-color: var(--bg); 
+    color: var(--text); 
+    font-family: 'Inter', sans-serif; 
+    line-height: 1.8; 
+    transition: background 0.3s, color 0.3s; /* Smooth transition for dark mode */
+}
+
+/* Main Content Container */
+.container { 
+    max-width: 800px; 
+    margin: 0 auto; 
+    padding: 40px 20px 100px 20px; 
+    /* The below ensuring the page grows with the content to prevent cutoff */
+    height: auto !important; 
+    display: block;
+}
+
+/* Typography */
+header { 
+    text-align: center; 
+    border-bottom: 3px double var(--accent); 
+    margin-bottom: 50px; 
+    padding-bottom: 20px; 
+}
+
 h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--primary); }
+
+/* Manuscript Style: Large decorative first letter for the start of the lecture */
+.drop-cap::first-letter { 
+    font-family: 'Playfair Display', serif; 
+    float: left; 
+    font-size: 4.5rem; 
+    line-height: 4rem; 
+    padding-right: 12px; 
+    color: var(--primary); 
+    font-weight: bold; 
+}
+
+/* Liturgical Quote Boxes */
+.liturgy-quote { 
+    background: var(--quote-bg); 
+    border-radius: 8px; 
+    padding: 20px; 
+    font-style: italic; 
+    margin: 25px 0; 
+    border: 1px solid var(--accent); 
+}
+
+/* Markdown Code Tones (terms wrapped in backticks) */
+code { 
+    background-color: var(--quote-bg); 
+    padding: 2px 5px; 
+    border-radius: 4px; 
+    color: var(--primary); 
+    font-family: monospace; 
+}
+
+/* Reading Progress Bar (Top of Screen) */
+#progress-bar { 
+    position: fixed; 
+    top: 0; left: 0; 
+    height: 4px; 
+    background: var(--accent); 
+    width: 0%; 
+    z-index: 9999; 
+}
 
 /* Footnote Peeking Tooltip */
 .footnote-tooltip {
@@ -32,26 +106,17 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--primary); }
     font-size: 0.9rem;
     max-width: 300px;
     z-index: 10000;
-    display: none; /* Controlled by JS */
-    pointer-events: none;
-    line-height: 1.5;
+    display: none;
+    pointer-events: none; /* Prevents the mouse from accidentally selecting the tooltip */
 }
 
-/* UI Elements */
-#progress-bar { position: fixed; top: 0; left: 0; height: 4px; background: var(--accent); width: 0%; z-index: 9999; }
+/* UI Interactive Buttons (Floating) */
 #theme-toggle { position: fixed; top: 20px; right: 20px; background: var(--quote-bg); border: 1px solid var(--accent); padding: 8px; border-radius: 50%; cursor: pointer; z-index: 10000; font-size: 20px; }
 #scrollToTop { position: fixed; bottom: 30px; right: 30px; display: none; background: var(--primary); color: white; border: none; border-radius: 50%; width: 45px; height: 45px; cursor: pointer; font-size: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
 
-.liturgy-quote { background: var(--quote-bg); border-radius: 8px; padding: 20px; font-style: italic; margin: 25px 0; border: 1px solid var(--accent); }
-code { background-color: var(--quote-bg); padding: 2px 5px; border-radius: 4px; color: var(--primary); font-family: monospace; }
-.reading-time { font-size: 0.85rem; color: var(--accent); font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
-
-/* Nav Buttons */
+/* Bottom Navigation Buttons */
 .nav-buttons { display: flex; justify-content: space-between; margin: 50px 0; border-top: 1px solid #ddd; padding-top: 20px; }
 .btn { text-decoration: none; padding: 12px 25px; border-radius: 8px; font-weight: bold; border: 2px solid var(--primary); transition: 0.3s; }
 .btn-home { color: var(--primary); }
 .btn-next { color: white; background: var(--primary); }
 .btn:hover { background: var(--accent); border-color: var(--accent); color: white; transform: translateY(-2px); }
-
-/* Manuscript Drop Cap Support */
-.drop-cap::first-letter { font-family: 'Playfair Display', serif; float: left; font-size: 4.5rem; line-height: 4rem; padding-right: 12px; color: var(--primary); font-weight: bold; }
