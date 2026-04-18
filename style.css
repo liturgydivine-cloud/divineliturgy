@@ -8,6 +8,7 @@
     --text: #2d2d2d;
     --bg: #fdfcf8;
     --quote-bg: #f4f0e6;
+    --pattern-opacity: 0.05; 
 }
 
 /* Vesper Mode (Dark) Overrides */
@@ -16,6 +17,7 @@
     --text: #e0e0e0;
     --primary: #ff4d4d;
     --quote-bg: #2d2d2d;
+    --pattern-opacity: 0.03;
 }
 
 /* --- THE HIGHLIGHT FEATURE --- */
@@ -24,11 +26,32 @@
 
 html { scroll-behavior: smooth; }
 
+/* --- THE UNIFIED BACKGROUND PATTERN --- */
 body { 
     margin: 0; padding: 0; 
-    background-color: var(--bg); color: var(--text); 
+    background-color: var(--bg); 
+    color: var(--text); 
     font-family: 'Inter', sans-serif; line-height: 1.8; 
     transition: background 0.3s, color 0.3s; 
+
+    /* Subtle SVG Pattern: Interwoven Vines and Crosses */
+    background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d4af37' fill-opacity='0.08' fill-rule='evenodd'%3E%3Cpath d='M40 0l2 10h10l-8 6 3 10-7-6-7 6 3-10-8-6h10l2-10zm0 80l2-10h10l-8-6 3-10-7 6-7-6 3 10-8 6h10l2-10zM0 40l10-2v-10l6 8 10-3-6 7 6 7-10-3-6 8v-10l-10-2zm80 0l-10-2v-10l-6 8-10-3 6 7-6 7 10-3 6 8v-10l10-2zM40 40c4 0 8-4 8-8s-4-8-8-8-8 4-8 8 4 8 8 8zm0 4c-6 0-11-5-11-11s5-11 11-11 11 5 11 11-5 11-11 11z'/%3E%3C/g%3E%/svg%3E");
+    background-attachment: fixed; /* Keeps background still while text scrolls */
+}
+
+/* --- TEXT READABILITY OVERLAY --- */
+/* This ensures the background pattern doesn't make the text hard to read */
+.container { 
+    max-width: 800px; margin: 40px auto; 
+    padding: 60px 40px; 
+    background: rgba(253, 252, 248, 0.9); /* Slightly transparent cream */
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    height: auto !important; display: block;
+}
+
+[data-theme="dark"] .container {
+    background: rgba(26, 26, 26, 0.9); /* Transparent dark for dark mode */
 }
 
 .container { 
