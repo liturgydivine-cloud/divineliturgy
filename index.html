@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- 1. METADATA & SEO -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liturgical Studies | Deacon Wannas</title>
+    
+    <!-- 2. EXTERNAL RESOURCES -->
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    
     <style>
-        body { text-align: center; padding: 50px 20px; }
+        /* BASE PAGE SETTINGS */
+        body { 
+            text-align: center; 
+            padding: 50px 20px;
+            margin: 0;
+            /* AUTHENTIC COPTIC WATERMARK: Repeating Crosses and Vines */
+            background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23d4af37' stroke-width='1' stroke-opacity='0.1'%3E%3Cpath d='M60 20v80M20 60h80'/%3E%3Ccircle cx='60' cy='15' r='3'/%3E%3Ccircle cx='60' cy='105' r='3'/%3E%3Ccircle cx='15' cy='60' r='3'/%3E%3Ccircle cx='105' cy='60' r='3'/%3E%3Cpath d='M20 20c20-10 40 10 60 0s40-10 60 0M0 100c20-10 40 10 60 0s40-10 60 0'/%3E%3C/g%3E%3C/svg%3E");
+            background-attachment: fixed;
+        }
         
-        /* CAPTIVATING INTRO STYLING */
+        /* 3. CAPTIVATING INTRO & AUTHOR SECTION */
         .intro-container {
             max-width: 800px;
             margin: 0 auto 40px auto;
@@ -18,6 +30,8 @@
             font-size: 3.5rem;
             margin-bottom: 10px;
             letter-spacing: -1px;
+            color: var(--primary);
+            font-family: 'Playfair Display', serif;
         }
         .author-name {
             color: var(--accent);
@@ -34,47 +48,78 @@
             font-style: italic;
         }
 
-        /* SEARCH BAR: Matches the 1100px Grid width */
+        /* 4. SEARCH BAR: Spans the same 1100px width as the grid */
         .search-input {
-            padding: 15px; width: 100%; max-width: 1100px;
-            border-radius: 12px; border: 2px solid var(--accent);
-            margin-bottom: 40px; font-family: inherit; font-size: 1.1rem;
-            box-sizing: border-box;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 15px; 
+            width: 100%; 
+            max-width: 1100px;
+            border-radius: 12px; 
+            border: 2px solid var(--accent);
+            margin-bottom: 40px; 
+            font-family: inherit; 
+            font-size: 1.1rem;
+            box-sizing: border-box; /* Prevents padding from breaking width alignment */
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            outline: none;
+        }
+        .search-input:focus {
+            border-color: var(--primary);
         }
 
-        /* GRID LAYOUT */
+        /* 5. THE LECTURE GRID */
         .lecture-grid {
-            max-width: 1100px; margin: 0 auto;
+            max-width: 1100px; 
+            margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
         }
 
+        /* LECTURE CARDS */
         .card {
-            background: white; border: 1px solid #e2dcc8; padding: 30px; 
-            border-radius: 12px; text-decoration: none; color: var(--primary); 
-            font-weight: bold; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
-            display: flex; flex-direction: column; height: 130px; justify-content: center;
+            background: rgba(255, 255, 255, 0.9); /* Glass effect to see background pattern */
+            border: 1px solid #e2dcc8; 
+            padding: 30px; 
+            border-radius: 12px; 
+            text-decoration: none; 
+            color: var(--primary) !important; /* Forces color for anchor tag */
+            font-weight: bold; 
+            transition: all 0.3s ease; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+            display: flex; 
+            flex-direction: column; 
+            height: 130px; 
+            justify-content: center;
+            backdrop-filter: blur(5px);
         }
 
-        .card:hover { transform: translateY(-5px); background: var(--primary); color: white; border-color: var(--primary); }
-        .card span { display: block; color: var(--accent); font-size: 0.8rem; text-transform: uppercase; margin-bottom: 8px; }
-        .card:hover span { color: #fdfcf8; }
+        .card span { 
+            display: block; 
+            color: var(--accent); 
+            font-size: 0.8rem; 
+            text-transform: uppercase; 
+            margin-bottom: 8px; 
+        }
 
-            /* ADD THIS TO THE STYLE SECTION OF index.html */
-    body {
-        background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d4af37' fill-opacity='0.08' fill-rule='evenodd'%3E%3Cpath d='M40 0l2 10h10l-8 6 3 10-7-6-7 6 3-10-8-6h10l2-10zm0 80l2-10h10l-8-6 3-10-7 6-7-6 3 10-8 6h10l2-10zM0 40l10-2v-10l6 8 10-3-6 7 6 7-10-3-6 8v-10l-10-2zm80 0l-10-2v-10l-6 8-10-3 6 7-6 7 10-3 6 8v-10l10-2zM40 40c4 0 8-4 8-8s-4-8-8-8-8 4-8 8 4 8 8 8zm0 4c-6 0-11-5-11-11s5-11 11-11 11 5 11 11-5 11-11 11z'/%3E%3C/g%3E%3C/svg%3E");
-        background-attachment: fixed;
-    }
-    .card {
-        background: rgba(255, 255, 255, 0.9) !important; /* Glass effect */
-        backdrop-filter: blur(5px); /* Blurs vines behind the card */
-    }
+        /* HOVER EFFECTS: Solves the disappearing text issue */
+        .card:hover { 
+            background: var(--primary) !important; 
+            transform: translateY(-5px); 
+            border-color: var(--primary);
+            box-shadow: 0 12px 20px rgba(139, 0, 0, 0.2);
+        }
+        
+        /* Forces all text within the card to turn white on hover */
+        .card:hover, 
+        .card:hover span { 
+            color: #ffffff !important; 
+        }
     </style>
 </head>
 <body>
 
+    <!-- HERO SECTION -->
     <div class="intro-container">
         <h1 class="main-title">Liturgical Studies</h1>
         <span class="author-name">by Deacon Wannas</span>
@@ -83,10 +128,10 @@
         </p>
     </div>
 
-    <!-- Full-Width Search Bar -->
+    <!-- SEARCH COMPONENT -->
     <input type="text" id="searchInput" class="search-input" placeholder="Search for a topic (e.g. Incense, Lamb, Communion)..." onkeyup="filterLectures()">
 
-    <!-- FULL GRID OF 19 LECTURES -->
+    <!-- LECTURE LISTING GRID -->
     <div class="lecture-grid" id="lectureGrid">
         <a href="lecture-01.html" class="card"><span>Lecture 1</span>Raising of Incense</a>
         <a href="lecture-02.html" class="card"><span>Lecture 2</span>The Prayers of the Rite</a>
@@ -109,11 +154,18 @@
         <a href="lecture-19.html" class="card"><span>Lecture 19</span>Communion & Dismissal</a>
     </div>
 
+    <!-- REAL-TIME FILTER SCRIPT -->
     <script>
+        /**
+         * Filters the grid of cards based on the search input.
+         * Hides cards that do not match the keyword.
+         */
         function filterLectures() {
             let input = document.getElementById('searchInput').value.toLowerCase();
             let cards = document.getElementsByClassName('card');
+            
             for (let i = 0; i < cards.length; i++) {
+                // Includes text from the span (Lecture #) and the title
                 if (cards[i].innerText.toLowerCase().includes(input)) {
                     cards[i].style.display = "flex";
                 } else {
@@ -122,5 +174,6 @@
             }
         }
     </script>
+
 </body>
 </html>

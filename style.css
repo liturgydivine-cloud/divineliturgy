@@ -1,65 +1,60 @@
 /**
  * LITURGICAL STUDIES: GLOBAL STYLESHEET
+ * Author: Deacon Wannas
+ * Theme: Vibrant Coptic (Deep Crimson, Gold, and Parchment)
  */
 
+/* 1. GLOBAL VARIABLES */
 :root {
-    --primary: #8b0000;
-    --accent: #d4af37;
-    --text: #2d2d2d;
-    --bg: #fdfcf8;
-    --quote-bg: #f4f0e6;
-    --pattern-opacity: 0.05; 
+    --primary: #8b0000;    /* Deep Crimson */
+    --accent: #d4af37;     /* Gold */
+    --text: #2d2d2d;       
+    --bg: #fdfcf8;         
+    --quote-bg: #f4f0e6;   
 }
 
-/* Vesper Mode (Dark) Overrides */
+/* 2. VESPER MODE (DARK THEME) overrides */
 [data-theme="dark"] {
     --bg: #1a1a1a;
     --text: #e0e0e0;
-    --primary: #ff4d4d;
+    --primary: #ff4d4d;    
     --quote-bg: #2d2d2d;
-    --pattern-opacity: 0.03;
 }
 
-/* --- THE HIGHLIGHT FEATURE --- */
-::selection { background: var(--accent); color: white; }
-::-moz-selection { background: var(--accent); color: white; }
+/* 3. CORE PAGE ELEMENTS */
+html { 
+    scroll-behavior: smooth; 
+}
 
-html { scroll-behavior: smooth; }
-
-/* --- THE UNIFIED BACKGROUND PATTERN --- */
 body { 
     margin: 0; padding: 0; 
-    background-color: var(--bg); 
-    color: var(--text); 
+    background-color: var(--bg); color: var(--text); 
     font-family: 'Inter', sans-serif; line-height: 1.8; 
     transition: background 0.3s, color 0.3s; 
 
-    /* Subtle SVG Pattern: Interwoven Vines and Crosses */
-    background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d4af37' fill-opacity='0.08' fill-rule='evenodd'%3E%3Cpath d='M40 0l2 10h10l-8 6 3 10-7-6-7 6 3-10-8-6h10l2-10zm0 80l2-10h10l-8-6 3-10-7 6-7-6 3 10-8 6h10l2-10zM0 40l10-2v-10l6 8 10-3-6 7 6 7-10-3-6 8v-10l-10-2zm80 0l-10-2v-10l-6 8-10-3 6 7-6 7 10-3 6 8v-10l10-2zM40 40c4 0 8-4 8-8s-4-8-8-8-8 4-8 8 4 8 8 8zm0 4c-6 0-11-5-11-11s5-11 11-11 11 5 11 11-5 11-11 11z'/%3E%3C/g%3E%/svg%3E");
-    background-attachment: fixed; /* Keeps background still while text scrolls */
+    /* AUTHENTIC COPTIC WATERMARK */
+    background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23d4af37' stroke-width='1' stroke-opacity='0.1'%3E%3Cpath d='M60 20v80M20 60h80'/%3E%3Ccircle cx='60' cy='15' r='3'/%3E%3Ccircle cx='60' cy='105' r='3'/%3E%3Ccircle cx='15' cy='60' r='3'/%3E%3Ccircle cx='105' cy='60' r='3'/%3E%3Cpath d='M20 20c20-10 40 10 60 0s40-10 60 0M0 100c20-10 40 10 60 0s40-10 60 0'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
 }
 
-/* --- TEXT READABILITY OVERLAY --- */
-/* This ensures the background pattern doesn't make the text hard to read */
+/* 4. TEXT HIGHLIGHT FEATURE (Gold selection) */
+::selection { background: var(--accent); color: white; }
+::-moz-selection { background: var(--accent); color: white; }
+
+/* 5. CONTENT CONTAINER (The "Glassmorphism" Box) */
 .container { 
     max-width: 800px; margin: 40px auto; 
-    padding: 60px 40px; 
-    background: rgba(253, 252, 248, 0.9); /* Slightly transparent cream */
+    padding: 60px 40px 100px 40px; 
+    background: rgba(253, 252, 248, 0.94); 
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    height: auto !important; display: block;
+    height: auto !important; 
+    display: block;
 }
 
-[data-theme="dark"] .container {
-    background: rgba(26, 26, 26, 0.9); /* Transparent dark for dark mode */
-}
+[data-theme="dark"] .container { background: rgba(26, 26, 26, 0.94); }
 
-.container { 
-    max-width: 800px; margin: 0 auto; 
-    padding: 40px 20px 100px 20px; 
-    height: auto !important; display: block;
-}
-
+/* 6. TYPOGRAPHY */
 header { 
     text-align: center; border-bottom: 3px double var(--accent); 
     margin-bottom: 50px; padding-bottom: 20px; 
@@ -67,38 +62,62 @@ header {
 
 h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--primary); }
 
-/* Manuscript Style */
+/* MANUSCRIPT STYLE Drop Cap */
 .drop-cap::first-letter { 
     font-family: 'Playfair Display', serif; float: left; 
     font-size: 4.5rem; line-height: 4rem; padding-right: 12px; 
     color: var(--primary); font-weight: bold; 
 }
 
+/* 7. LITURGICAL ELEMENTS */
 .liturgy-quote { 
-    background: var(--quote-bg); border-radius: 8px; padding: 20px; 
-    font-style: italic; margin: 25px 0; border: 1px solid var(--accent); 
+    background: var(--quote-bg); border-radius: 8px; 
+    padding: 20px; font-style: italic; margin: 25px 0; border: 1px solid var(--accent); 
 }
 
-code { background-color: var(--quote-bg); padding: 2px 5px; border-radius: 4px; color: var(--primary); font-family: monospace; }
+code { 
+    background-color: var(--quote-bg); padding: 2px 5px; border-radius: 4px; 
+    color: var(--primary); font-family: monospace; 
+}
 
-/* Progress Bar */
+/* 8. INTERACTIVE UI COMPONENTS */
 #progress-bar { position: fixed; top: 0; left: 0; height: 4px; background: var(--accent); width: 0%; z-index: 9999; }
 
-/* Footnote Tooltip */
+/* Footnote Tooltip: Dynamic adjustment for Dark Mode */
 .footnote-tooltip {
     position: absolute; background: white; color: #333; border: 1px solid var(--accent);
     padding: 12px; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    font-size: 0.9rem; max-width: 300px; z-index: 10000; display: none;
-    pointer-events: none; line-height: 1.5;
+    font-size: 0.9rem; max-width: 300px; z-index: 10000; display: none; pointer-events: none; line-height: 1.5;
 }
+[data-theme="dark"] .footnote-tooltip { background: #333; color: white; }
 
-/* UI Interactive Buttons */
 #theme-toggle { position: fixed; top: 20px; right: 20px; background: var(--quote-bg); border: 1px solid var(--accent); padding: 8px; border-radius: 50%; cursor: pointer; z-index: 10000; font-size: 20px; }
 #scrollToTop { position: fixed; bottom: 30px; right: 30px; display: none; background: var(--primary); color: white; border: none; border-radius: 50%; width: 45px; height: 45px; cursor: pointer; font-size: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
 
-/* Nav Buttons */
+/* 9. INDEX PAGE SPECIFIC STYLES (Cards and Search) */
+.search-input {
+    padding: 15px; width: 100%; max-width: 1100px;
+    border-radius: 12px; border: 2px solid var(--accent);
+    margin-bottom: 40px; font-family: inherit; font-size: 1.1rem;
+    box-sizing: border-box; background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); outline: none;
+}
+[data-theme="dark"] .search-input { background: #2d2d2d; color: white; border-color: var(--accent); }
+
+.card {
+    background: rgba(255, 255, 255, 0.9); border: 1px solid #e2dcc8; padding: 30px; 
+    border-radius: 12px; text-decoration: none !important; color: var(--primary) !important; 
+    font-weight: bold; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+    display: flex; flex-direction: column; height: 130px; justify-content: center;
+    backdrop-filter: blur(5px);
+}
+.card:hover { background: var(--primary) !important; color: white !important; transform: translateY(-5px); border-color: var(--primary); }
+.card span { display: block; color: var(--accent); font-size: 0.8rem; text-transform: uppercase; margin-bottom: 8px; }
+.card:hover span { color: rgba(255, 255, 255, 0.8) !important; }
+
+/* 10. NAVIGATION BUTTONS (Lecture Bottom) */
 .nav-buttons { display: flex; justify-content: space-between; margin: 50px 0; border-top: 1px solid #ddd; padding-top: 20px; }
 .btn { text-decoration: none; padding: 12px 25px; border-radius: 8px; font-weight: bold; border: 2px solid var(--primary); transition: 0.3s; }
 .btn-home { color: var(--primary); }
 .btn-next { color: white; background: var(--primary); }
-.btn:hover { background: var(--accent); border-color: var(--accent); color: white; transform: translateY(-2px); }
+.btn:hover { background: var(--accent); border-color: var(--accent); color: white !important; transform: translateY(-2px); }
