@@ -9,117 +9,11 @@
     <!-- 2. EXTERNAL RESOURCES -->
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-    
-    <style>
-        /* BASE PAGE SETTINGS */
-        body { 
-            text-align: center; 
-            padding: 50px 20px;
-            margin: 0;
-            /* AUTHENTIC COPTIC WATERMARK: Repeating Crosses and Vines */
-            background-image: url("data:image/svg+xml,%3Csvg width='160' height='160' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23d4af37' stroke-width='1.5' stroke-opacity='0.08'%3E%3Cpath d='M80 30 L85 45 L95 45 L100 30 L115 35 L110 45 L115 50 L130 50 L125 60 L130 65 L130 80 L115 85 L115 95 L130 100 L125 115 L115 110 L110 115 L100 130 L85 125 L80 130 L65 130 L60 115 L50 115 L45 130 L30 125 L35 110 L30 105 L15 105 L20 95 L15 90 L15 75 L30 70 L30 60 L15 55 L20 40 L35 45 L40 40 L50 25 L65 30 L70 25 Z' transform='translate(0,0)'/%3E%3Cpath d='M80 30 L85 45 L95 45 L100 30 L115 35 L110 45 L115 50 L130 50 L125 60 L130 65 L130 80 L115 85 L115 95 L130 100 L125 115 L115 110 L110 115 L100 130 L85 125 L80 130 L65 130 L60 115 L50 115 L45 130 L30 125 L35 110 L30 105 L15 105 L20 95 L15 90 L15 75 L30 70 L30 60 L15 55 L20 40 L35 45 L40 40 L50 25 L65 30 L70 25 Z' transform='translate(80,80)'/%3E%3C/g%3E%3C/svg%3E");
-            background-attachment: fixed;
-        }
-        
-        /* 3. CAPTIVATING INTRO & AUTHOR SECTION */
-        .intro-container {
-            max-width: 800px;
-            margin: 0 auto 40px auto;
-        }
-        .main-title {
-            font-size: 3.5rem;
-            margin-bottom: 10px;
-            letter-spacing: -1px;
-            color: var(--primary);
-            font-family: 'Playfair Display', serif;
-        }
-        .author-name {
-            color: var(--accent);
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-style: italic;
-            margin-bottom: 20px;
-            display: block;
-        }
-        .captivating-text {
-            font-size: 1.2rem;
-            color: #555;
-            line-height: 1.6;
-            font-style: italic;
-        }
-
-        /* 4. SEARCH BAR: Spans the same 1100px width as the grid */
-        .search-input {
-            padding: 15px; 
-            width: 100%; 
-            max-width: 1100px;
-            border-radius: 12px; 
-            border: 2px solid var(--accent);
-            margin-bottom: 40px; 
-            font-family: inherit; 
-            font-size: 1.1rem;
-            box-sizing: border-box; /* Prevents padding from breaking width alignment */
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            outline: none;
-        }
-        .search-input:focus {
-            border-color: var(--primary);
-        }
-
-        /* 5. THE LECTURE GRID */
-        .lecture-grid {
-            max-width: 1100px; 
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        /* LECTURE CARDS */
-        .card {
-            background: rgba(255, 255, 255, 0.9); /* Glass effect to see background pattern */
-            border: 1px solid #e2dcc8; 
-            padding: 30px; 
-            border-radius: 12px; 
-            text-decoration: none; 
-            color: var(--primary) !important; /* Forces color for anchor tag */
-            font-weight: bold; 
-            transition: all 0.3s ease; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
-            display: flex; 
-            flex-direction: column; 
-            height: 130px; 
-            justify-content: center;
-            backdrop-filter: blur(5px);
-        }
-
-        .card span { 
-            display: block; 
-            color: var(--accent); 
-            font-size: 0.8rem; 
-            text-transform: uppercase; 
-            margin-bottom: 8px; 
-        }
-
-        /* HOVER EFFECTS: Solves the disappearing text issue */
-        .card:hover { 
-            background: var(--primary) !important; 
-            transform: translateY(-5px); 
-            border-color: var(--primary);
-            box-shadow: 0 12px 20px rgba(139, 0, 0, 0.2);
-        }
-        
-        /* Forces all text within the card to turn white on hover */
-        .card:hover, 
-        .card:hover span { 
-            color: #ffffff !important; 
-        }
-    </style>
+    <script src="main.js" defer></script>
 </head>
 <body>
 
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION: Title and Captivating Intro -->
     <div class="intro-container">
         <h1 class="main-title">Liturgical Studies</h1>
         <span class="author-name">by Deacon Wannas</span>
@@ -128,10 +22,10 @@
         </p>
     </div>
 
-    <!-- SEARCH COMPONENT -->
+    <!-- SEARCH COMPONENT: Full-Width Search for Topics -->
     <input type="text" id="searchInput" class="search-input" placeholder="Search for a topic (e.g. Incense, Lamb, Communion)..." onkeyup="filterLectures()">
 
-    <!-- LECTURE LISTING GRID -->
+    <!-- LECTURE LISTING GRID: All 19 Chapters -->
     <div class="lecture-grid" id="lectureGrid">
         <a href="lecture-01.html" class="card"><span>Lecture 1</span>Raising of Incense</a>
         <a href="lecture-02.html" class="card"><span>Lecture 2</span>The Prayers of the Rite</a>
@@ -156,16 +50,10 @@
 
     <!-- REAL-TIME FILTER SCRIPT -->
     <script>
-        /**
-         * Filters the grid of cards based on the search input.
-         * Hides cards that do not match the keyword.
-         */
         function filterLectures() {
             let input = document.getElementById('searchInput').value.toLowerCase();
             let cards = document.getElementsByClassName('card');
-            
             for (let i = 0; i < cards.length; i++) {
-                // Includes text from the span (Lecture #) and the title
                 if (cards[i].innerText.toLowerCase().includes(input)) {
                     cards[i].style.display = "flex";
                 } else {
