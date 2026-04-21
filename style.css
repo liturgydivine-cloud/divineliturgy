@@ -93,6 +93,7 @@ code { background-color: var(--quote-bg); padding: 2px 5px; border-radius: 4px; 
 .intro-container {
     max-width: 800px;
     margin: 0 auto 40px auto;
+    text-align: center;
 }
 
 .main-title {
@@ -163,26 +164,30 @@ code { background-color: var(--quote-bg); padding: 2px 5px; border-radius: 4px; 
 .lecture-grid .card {
     background: rgba(255, 255, 255, 0.9);
     border: 1px solid #e2dcc8;
-    padding: 30px;
+    padding: 25px;
     border-radius: 12px;
     text-decoration: none !important;
     color: var(--primary) !important;
     font-weight: bold;
+    font-size: 1.1rem;
+    text-align: center;
     transition: all 0.3s ease;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     display: flex;
     flex-direction: column;
-    height: 130px;
+    align-items: center;
     justify-content: center;
+    height: 140px;
     backdrop-filter: blur(5px);
 }
 
 .lecture-grid .card span {
     display: block;
     color: var(--accent);
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     text-transform: uppercase;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+    font-weight: 600;
 }
 
 .lecture-grid .card:hover {
