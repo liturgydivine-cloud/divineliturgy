@@ -111,3 +111,20 @@ document.addEventListener("DOMContentLoaded", function() {
     `;
     footerParent.appendChild(footer);
 });
+
+/**
+ * Filters lecture cards based on search input.
+ * Hides cards that do not match the search keyword.
+ * @function filterLectures
+ */
+function filterLectures() {
+    let input = document.getElementById('searchInput').value.toLowerCase();
+    let cards = document.getElementsByClassName('card');
+    for (let i = 0; i < cards.length; i++) {
+        if (cards[i].innerText.toLowerCase().includes(input)) {
+            cards[i].style.display = "flex";
+        } else {
+            cards[i].style.display = "none";
+        }
+    }
+}
