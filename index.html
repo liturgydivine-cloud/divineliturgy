@@ -11,19 +11,20 @@
 </head>
 <body>
 
-    <div class="intro-container">
-        <h1 class="main-title">Liturgical Studies</h1>
-        <span class="author-name">by Deacon Wannas</span>
-        <p class="captivating-text">
+    <header class="intro-container">
+        <h1>Liturgical Studies</h1>
+        <p class="byline">by Deacon Wannas</p>
+        <p class="tagline">
             "Step into the Holy of Holies. Experience the mystical union of Heaven and Earth through this immersive 19-part spiritual journey into the sacred Rites of the Divine Liturgy."
         </p>
-    </div>
+    </header>
 
-    <!-- Full-Width Search Bar -->
-    <input type="text" id="searchInput" class="search-input" placeholder="Search for a topic (e.g. Incense, Lamb, Communion)..." onkeyup="filterLectures()">
+    <nav aria-label="Search lectures">
+        <input type="search" id="searchInput" aria-label="Search for a lecture topic" placeholder="Search for a topic (e.g. Incense, Lamb, Communion)..." onkeyup="filterLectures()">
+    </nav>
 
-    <!-- FULL GRID OF 19 LECTURES -->
-    <div class="lecture-grid" id="lectureGrid">
+    <main>
+        <section class="lecture-grid" id="lectureGrid" aria-label="All 19 lectures">
         <a href="lecture-01.html" class="card"><span>Lecture 1</span>Raising of Incense</a>
         <a href="lecture-02.html" class="card"><span>Lecture 2</span>The Prayers of the Rite</a>
         <a href="lecture-03.html" class="card"><span>Lecture 3</span>Psalms & Choosing the Lamb</a>
@@ -43,7 +44,8 @@
         <a href="lecture-17.html" class="card"><span>Lecture 17</span>The Lord's Prayer</a>
         <a href="lecture-18.html" class="card"><span>Lecture 18</span>Signs Before Confession</a>
         <a href="lecture-19.html" class="card"><span>Lecture 19</span>Communion & Dismissal</a>
-    </div>
+        </section>
+    </main>
 
 </body>
 </html>
