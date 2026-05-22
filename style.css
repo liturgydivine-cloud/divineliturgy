@@ -85,6 +85,40 @@ code { background-color: var(--quote-bg); padding: 2px 5px; border-radius: 4px; 
 #theme-toggle { position: fixed; top: 20px; right: 20px; background: var(--quote-bg); border: 1px solid var(--accent); padding: 8px; border-radius: 50%; cursor: pointer; z-index: 10000; font-size: 20px; }
 #scrollToTop { position: fixed; bottom: 30px; right: 30px; display: none; background: var(--primary); color: white; border: none; border-radius: 50%; width: 45px; height: 45px; cursor: pointer; font-size: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
 
+/* 6b. FOOTER CONTACT SECTION */
+.footer-contact {
+    text-align: center;
+    margin-top: 15px;
+    padding-bottom: 40px;
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+.footer-contact p {
+    margin: 0;
+    color: var(--text);
+}
+
+.footer-contact a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.footer-contact a:hover {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+[data-theme="dark"] .footer-contact a {
+    color: var(--accent);
+}
+
+[data-theme="dark"] .footer-contact a:hover {
+    color: #ffb3b3;
+}
+
 /* 7. NAVIGATION BUTTONS (FIXED FOR MOBILE) */
 .nav-buttons { 
     display: flex; 

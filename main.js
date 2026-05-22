@@ -105,9 +105,12 @@ document.addEventListener("DOMContentLoaded", function() {
     const footer = document.createElement('footer');
     footer.innerHTML = `
         <hr style="width: 80%; margin: 40px auto; opacity: 0.2;">
-        <p style="text-align:center; opacity:0.6; margin-top:20px; font-size:0.8rem; padding-bottom:40px;">
+        <p style="text-align:center; opacity:0.6; margin-top:20px; font-size:0.8rem; padding-bottom:20px;">
             &copy; ${new Date().getFullYear()} Liturgical Studies Series | Deacon Wannas
         </p>
+        <div class="footer-contact">
+            <p>Send Feedback: <a href="mailto:liturgydivine@gmail.com?subject=Feedback on Liturgical Studies">liturgydivine@gmail.com</a></p>
+        </div>
     `;
     footerParent.appendChild(footer);
 });
